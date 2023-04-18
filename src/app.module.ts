@@ -1,11 +1,14 @@
 import { Module } from '@nestjs/common';
 
-import { HealthcheckModule } from './healthcheck/healthcheck.module';
 import { HealthCheckController } from './healthcheck/healthcheck.controller';
 
+import { ArticleModule } from './article/article.module';
+import { ArticleController } from './article/article.controller';
+import { ArticleService } from './article/article.service';
+
 @Module({
-  imports: [HealthcheckModule],
-  controllers: [HealthCheckController],
-  providers: [],
+  imports: [ArticleModule],
+  controllers: [HealthCheckController, ArticleController],
+  providers: [ArticleService],
 })
 export class AppModule {}
