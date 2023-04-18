@@ -3,10 +3,13 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class ArticleService {
   async getArticles(query: string, date: string) {
-    const response = await this.getNewsByApi(query, date);
-    return response;
+    const { articles } = await this.getNewsByApi(query, date);
+
+    const data = this.getTreatedData(articles);
+    return data;
   }
 
+  // TO-DO: Treat error
   async getNewsByApi(query: string, date: string) {
     const newsByApi = await this.fetchNewsJSON(query, date)
       .then((news) => {
@@ -20,10 +23,23 @@ export class ArticleService {
   }
 
   async fetchNewsJSON(query: string, date: string) {
-    const url = `${process.env.NEWS_API_URL}?q=${query}&from=${date}&sortBy=popularity&apiKey=${process.env.NEWS_API_KEY}`;
+    const url = `${process.env.NEWS_API_URL}?q=${query}&from=${date}&apiKey=${process.env.NEWS_API_KEY}`;
 
     const response = await fetch(url);
     const news = await response.json();
     return news;
+  }
+
+  // TO-DO: Create DTO
+  getTreatedData(articles: any[]) {
+    const data = articles.map((article) => {
+      return {
+        author: article.author,
+        title: article.title,
+        description: article.description,
+      };
+    });
+
+    return data;
   }
 }
