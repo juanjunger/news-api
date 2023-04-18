@@ -39,6 +39,17 @@ I started a [news-front](https://github.com/juanjunger/news-front) repo to have 
 $ yarn install
 ```
 
+## Environment
+
+```bash
+$ touch .env
+
+// Your file should be like this
+NEWS_API_KEY="3568c8f509954fe18c90cdfe05a52721"
+NEWS_API_URL="https://newsapi.org/v2/everything"
+PORT="3333"
+```
+
 ## Running the app
 
 ```bash
