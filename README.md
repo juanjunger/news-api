@@ -24,7 +24,7 @@
 
 
 ## News Product
-I started a news-front repo to have a visualization of the product.
+I started a [news-front](https://github.com/juanjunger/news-front) repo to have a visualization of the product.
 
 <img width="1303" alt="image" src="https://user-images.githubusercontent.com/17859332/232923185-560d3dfe-9bcd-4e6b-a75d-6e5ddb7a3aa2.png">
 
